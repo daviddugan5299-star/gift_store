@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - GiftWonders</title>
+    <meta name="description" content="Get in touch with GiftWonders. We're here to help with gift recommendations, orders, and any questions you might have.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'pastel': {
+                            'pink': '#FFE4E6',
+                            'purple': '#F3E8FF',
+                            'blue': '#DBEAFE',
+                            'green': '#D1FAE5',
+                            'yellow': '#FEF3C7',
+                            'peach': '#FED7AA'
+                        },
+                        'warm': {
+                            'coral': '#FF6B6B',
+                            'rose': '#F472B6',
+                            'amber': '#F59E0B',
+                            'emerald': '#10B981',
+                            'violet': '#8B5CF6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-gift text-2xl text-warm-coral"></i>
+                        <span class="font-playfair text-2xl font-bold text-gray-800">GiftWonders</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="flex items-center text-gray-700 hover:text-warm-coral transition-colors font-medium">
+                            Categories
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-2">
+                                <a href="category.html?category=Birthday%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-pink hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-birthday-cake mr-2"></i>Birthday Gifts
+                                </a>
+                                <a href="category.html?category=Anniversary%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-purple hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-heart mr-2"></i>Anniversary Gifts
+                                </a>
+                                <a href="category.html?category=Personalized%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-blue hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-user-edit mr-2"></i>Personalized Gifts
+                                </a>
+                                <a href="category.html?category=Seasonal%20Specials" class="block px-4 py-2 text-gray-700 hover:bg-pastel-green hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-snowflake mr-2"></i>Seasonal Specials
+                                </a>
+                                <a href="category.html?category=Gift%20Hampers" class="block px-4 py-2 text-gray-700 hover:bg-pastel-yellow hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-shopping-basket mr-2"></i>Gift Hampers
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="deals.html" class="text-gray-700 hover:text-warm-coral transition-colors font-medium">
+                        <i class="fas fa-tags mr-1"></i>Deals
+                    </a>
+                    <a href="about.html" class="text-gray-700 hover:text-warm-coral transition-colors font-medium">About</a>
+                    <a href="contact.html" class="text-warm-coral font-medium">Contact</a>
+                </div>
+
+                <!-- Right Side Icons -->
+                <div class="flex items-center space-x-4">
+                    <!-- Cart -->
+                    <button class="relative text-gray-700 hover:text-warm-coral transition-colors" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-warm-coral text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="md:hidden text-gray-700 hover:text-warm-coral transition-colors" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200">
+                <div class="py-4 space-y-2">
+                    <a href="category.html?category=Birthday%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-pink rounded-lg">
+                        <i class="fas fa-birthday-cake mr-2"></i>Birthday Gifts
+                    </a>
+                    <a href="category.html?category=Anniversary%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-purple rounded-lg">
+                        <i class="fas fa-heart mr-2"></i>Anniversary Gifts
+                    </a>
+                    <a href="category.html?category=Personalized%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-blue rounded-lg">
+                        <i class="fas fa-user-edit mr-2"></i>Personalized Gifts
+                    </a>
+                    <a href="category.html?category=Seasonal%20Specials" class="block px-4 py-2 text-gray-700 hover:bg-pastel-green rounded-lg">
+                        <i class="fas fa-snowflake mr-2"></i>Seasonal Specials
+                    </a>
+                    <a href="category.html?category=Gift%20Hampers" class="block px-4 py-2 text-gray-700 hover:bg-pastel-yellow rounded-lg">
+                        <i class="fas fa-shopping-basket mr-2"></i>Gift Hampers
+                    </a>
+                    <a href="deals.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                        <i class="fas fa-tags mr-2"></i>Deals
+                    </a>
+                    <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">About</a>
+                    <a href="contact.html" class="block px-4 py-2 text-warm-coral font-medium rounded-lg bg-pastel-pink">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-pastel-pink via-pastel-purple to-pastel-blue py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="font-playfair text-4xl lg:text-6xl font-bold text-gray-800 mb-6">
+                        Get in <span class="text-warm-coral">Touch</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        We're here to help make your gift-giving experience perfect. Whether you need recommendations, 
+                        have questions about an order, or just want to chat about gifts, we'd love to hear from you!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Methods Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Phone -->
+                    <div class="text-center p-8 bg-pastel-pink rounded-2xl hover:shadow-lg transition-all duration-300">
+                        <div class="w-16 h-16 bg-warm-coral rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-phone text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-4">Call Us</h3>
+                        <p class="text-gray-600 mb-4">Speak directly with our gift experts</p>
+                        <a href="tel:+1-555-GIFT-123" class="text-warm-coral font-semibold hover:underline text-lg">
+                            +1 (555) GIFT-123
+                        </a>
+                        <p class="text-sm text-gray-500 mt-2">Mon-Fri: 9AM-8PM EST<br>Sat-Sun: 10AM-6PM EST</p>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="text-center p-8 bg-pastel-purple rounded-2xl hover:shadow-lg transition-all duration-300">
+                        <div class="w-16 h-16 bg-warm-violet rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-envelope text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-4">Email Us</h3>
+                        <p class="text-gray-600 mb-4">Send us a detailed message</p>
+                        <a href="mailto:hello@giftwonders.com" class="text-warm-coral font-semibold hover:underline">
+                            hello@giftwonders.com
+                        </a>
+                        <p class="text-sm text-gray-500 mt-2">We respond within 24 hours</p>
+                    </div>
+
+                    <!-- Live Chat -->
+                    <div class="text-center p-8 bg-pastel-blue rounded-2xl hover:shadow-lg transition-all duration-300">
+                        <div class="w-16 h-16 bg-warm-emerald rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-comments text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-4">Live Chat</h3>
+                        <p class="text-gray-600 mb-4">Get instant help from our team</p>
+                        <button onclick="openLiveChat()" class="text-warm-coral font-semibold hover:underline">
+                            Start Chat
+                        </button>
+                        <p class="text-sm text-gray-500 mt-2">Available during business hours</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div>
+                        <h2 class="font-playfair text-3xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral focus:border-transparent">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral focus:border-transparent">
+                            </div>
+
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral focus:border-transparent">
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
+                                <select id="subject" name="subject" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral focus:border-transparent">
+                                    <option value="">Select a subject...</option>
+                                    <option value="gift-recommendations">Gift Recommendations</option>
+                                    <option value="order-inquiry">Order Inquiry</option>
+                                    <option value="return-exchange">Return/Exchange</option>
+                                    <option value="technical-support">Technical Support</option>
+                                    <option value="partnership">Partnership Inquiry</option>
+                                    <option value="feedback">Feedback/Suggestions</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="orderNumber" class="block text-sm font-medium text-gray-700 mb-2">Order Number (if applicable)</label>
+                                <input type="text" id="orderNumber" name="orderNumber"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral focus:border-transparent">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                                <textarea id="message" name="message" rows="5" required
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral focus:border-transparent"
+                                          placeholder="Tell us how we can help you..."></textarea>
+                            </div>
+
+                            <div class="flex items-start">
+                                <input type="checkbox" id="newsletter" name="newsletter" 
+                                       class="rounded border-gray-300 text-warm-coral focus:ring-warm-coral mt-1">
+                                <label for="newsletter" class="ml-2 text-sm text-gray-600">
+                                    I'd like to receive gift ideas and special offers via email
+                                </label>
+                            </div>
+
+                            <button type="submit" 
+                                    class="w-full bg-warm-coral text-white py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-200 transform hover:scale-105 shadow-lg">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Store Information & Map -->
+                    <div>
+                        <h2 class="font-playfair text-3xl font-bold text-gray-800 mb-6">Visit Our Store</h2>
+                        
+                        <!-- Store Details -->
+                        <div class="bg-gray-50 rounded-2xl p-6 mb-6">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-map-marker-alt text-warm-coral text-xl mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Address</h4>
+                                        <p class="text-gray-600">
+                                            123 Gift Street<br>
+                                            Wonderland Plaza, Suite 456<br>
+                                            New York, NY 10001
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-clock text-warm-coral text-xl mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Store Hours</h4>
+                                        <p class="text-gray-600">
+                                            Monday - Friday: 10:00 AM - 8:00 PM<br>
+                                            Saturday: 9:00 AM - 9:00 PM<br>
+                                            Sunday: 11:00 AM - 6:00 PM
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-parking text-warm-coral text-xl mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Parking</h4>
+                                        <p class="text-gray-600">
+                                            Free 2-hour parking available<br>
+                                            Validated parking in Wonderland Plaza garage
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Placeholder -->
+                        <div class="bg-gray-200 rounded-2xl h-64 flex items-center justify-center mb-6 relative overflow-hidden">
+                            <!-- Embedded Map -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830921654!2d-74.119763973046!3d40.69766374865766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1647883739823!5m2!1sen!2sus"
+                                    class="w-full h-full rounded-2xl" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                            <div class="absolute inset-0 bg-warm-coral bg-opacity-10 flex items-center justify-center">
+                                <div class="bg-white bg-opacity-90 p-4 rounded-lg shadow-lg">
+                                    <i class="fas fa-map-marker-alt text-warm-coral text-2xl mb-2"></i>
+                                    <p class="font-semibold text-gray-800">GiftWonders Store</p>
+                                    <p class="text-sm text-gray-600">123 Gift Street, NYC</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <a href="https://maps.google.com/?q=123+Gift+Street+New+York+NY" 
+                               target="_blank" 
+                               class="flex-1 bg-warm-coral text-white text-center py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+                                <i class="fas fa-directions mr-2"></i>Get Directions
+                            </a>
+                            <a href="tel:+1-555-GIFT-123" 
+                               class="flex-1 border-2 border-warm-coral text-warm-coral text-center py-3 rounded-lg font-semibold hover:bg-warm-coral hover:text-white transition-colors">
+                                <i class="fas fa-phone mr-2"></i>Call Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                        Frequently Asked <span class="text-warm-coral">Questions</span>
+                    </h2>
+                    <p class="text-lg text-gray-600">
+                        Quick answers to common questions about our gifts and services
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(0)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-semibold text-gray-800">What are your shipping options and delivery times?</h3>
+                                <i class="fas fa-chevron-down text-gray-500 transition-transform duration-200" id="faq-icon-0"></i>
+                            </div>
+                        </button>
+                        <div class="hidden px-6 pb-4 text-gray-600" id="faq-content-0">
+                            <p>We offer several shipping options: Standard (3-5 business days), Express (1-2 business days), and Same-Day delivery in select areas. All orders over $75 qualify for free standard shipping.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(1)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-semibold text-gray-800">Can I personalize gifts with custom messages or engraving?</h3>
+                                <i class="fas fa-chevron-down text-gray-500 transition-transform duration-200" id="faq-icon-1"></i>
+                            </div>
+                        </button>
+                        <div class="hidden px-6 pb-4 text-gray-600" id="faq-content-1">
+                            <p>Yes! Many of our products can be personalized. Look for the "Personalize" option on product pages. Custom engraving and messages typically add 2-3 business days to processing time.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(2)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-semibold text-gray-800">What is your return and exchange policy?</h3>
+                                <i class="fas fa-chevron-down text-gray-500 transition-transform duration-200" id="faq-icon-2"></i>
+                            </div>
+                        </button>
+                        <div class="hidden px-6 pb-4 text-gray-600" id="faq-content-2">
+                            <p>We offer a 30-day return policy for most items in original condition. Personalized items cannot be returned unless defective. Contact our customer service team to initiate a return.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(3)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-semibold text-gray-800">Do you offer gift wrapping services?</h3>
+                                <i class="fas fa-chevron-down text-gray-500 transition-transform duration-200" id="faq-icon-3"></i>
+                            </div>
+                        </button>
+                        <div class="hidden px-6 pb-4 text-gray-600" id="faq-content-3">
+                            <p>Absolutely! All our gifts come beautifully wrapped at no extra charge. You can also add a personalized gift message during checkout. Premium gift wrapping options are available for special occasions.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="w-full text-left px-6 py-4 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(4)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-semibold text-gray-800">How can I track my order?</h3>
+                                <i class="fas fa-chevron-down text-gray-500 transition-transform duration-200" id="faq-icon-4"></i>
+                            </div>
+                        </button>
+                        <div class="hidden px-6 pb-4 text-gray-600" id="faq-content-4">
+                            <p>Once your order ships, you'll receive a confirmation email with tracking information. You can also log into your account on our website to view order status and tracking details.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cartSidebar" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="font-playfair text-xl font-semibold text-gray-800">Shopping Cart</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cartItems" class="flex-1 overflow-y-auto p-6">
+                <div class="text-center text-gray-500 py-8">
+                    <i class="fas fa-shopping-cart text-4xl mb-4"></i>
+                    <p>Your cart is empty</p>
+                    <p class="text-sm mt-2">Start adding some gifts to make someone happy!</p>
+                </div>
+            </div>
+            
+            <div id="cartFooter" class="border-t p-6 hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-semibold text-gray-800">Total:</span>
+                    <span id="cartTotal" class="font-bold text-xl text-warm-coral">$0.00</span>
+                </div>
+                <button class="w-full bg-warm-coral text-white py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">
+                    <i class="fas fa-credit-card mr-2"></i>Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40" onclick="toggleCart()"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-gift text-2xl text-warm-coral"></i>
+                        <span class="font-playfair text-2xl font-bold">GiftWonders</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Making gift-giving effortless and meaningful with thoughtfully curated collections for every occasion.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-playfair text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-warm-coral transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-warm-coral">Contact</a></li>
+                        <li><a href="deals.html" class="text-gray-300 hover:text-warm-coral transition-colors">Special Offers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-playfair text-lg font-semibold mb-4">Customer Care</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">Returns</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 GiftWonders. All rights reserved. Made with <i class="fas fa-heart text-warm-coral mx-1"></i> for gift lovers everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

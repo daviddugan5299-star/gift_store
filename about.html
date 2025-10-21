@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - GiftWonders</title>
+    <meta name="description" content="Learn about GiftWonders - our story, mission, and dedication to making gift-giving simple and memorable for everyone.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'pastel': {
+                            'pink': '#FFE4E6',
+                            'purple': '#F3E8FF',
+                            'blue': '#DBEAFE',
+                            'green': '#D1FAE5',
+                            'yellow': '#FEF3C7',
+                            'peach': '#FED7AA'
+                        },
+                        'warm': {
+                            'coral': '#FF6B6B',
+                            'rose': '#F472B6',
+                            'amber': '#F59E0B',
+                            'emerald': '#10B981',
+                            'violet': '#8B5CF6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-gift text-2xl text-warm-coral"></i>
+                        <span class="font-playfair text-2xl font-bold text-gray-800">GiftWonders</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="flex items-center text-gray-700 hover:text-warm-coral transition-colors font-medium">
+                            Categories
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-2">
+                                <a href="category.html?category=Birthday%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-pink hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-birthday-cake mr-2"></i>Birthday Gifts
+                                </a>
+                                <a href="category.html?category=Anniversary%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-purple hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-heart mr-2"></i>Anniversary Gifts
+                                </a>
+                                <a href="category.html?category=Personalized%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-blue hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-user-edit mr-2"></i>Personalized Gifts
+                                </a>
+                                <a href="category.html?category=Seasonal%20Specials" class="block px-4 py-2 text-gray-700 hover:bg-pastel-green hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-snowflake mr-2"></i>Seasonal Specials
+                                </a>
+                                <a href="category.html?category=Gift%20Hampers" class="block px-4 py-2 text-gray-700 hover:bg-pastel-yellow hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-shopping-basket mr-2"></i>Gift Hampers
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="deals.html" class="text-gray-700 hover:text-warm-coral transition-colors font-medium">
+                        <i class="fas fa-tags mr-1"></i>Deals
+                    </a>
+                    <a href="about.html" class="text-warm-coral font-medium">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-warm-coral transition-colors font-medium">Contact</a>
+                </div>
+
+                <!-- Right Side Icons -->
+                <div class="flex items-center space-x-4">
+                    <!-- Cart -->
+                    <button class="relative text-gray-700 hover:text-warm-coral transition-colors" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-warm-coral text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="md:hidden text-gray-700 hover:text-warm-coral transition-colors" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200">
+                <div class="py-4 space-y-2">
+                    <a href="category.html?category=Birthday%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-pink rounded-lg">
+                        <i class="fas fa-birthday-cake mr-2"></i>Birthday Gifts
+                    </a>
+                    <a href="category.html?category=Anniversary%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-purple rounded-lg">
+                        <i class="fas fa-heart mr-2"></i>Anniversary Gifts
+                    </a>
+                    <a href="category.html?category=Personalized%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-blue rounded-lg">
+                        <i class="fas fa-user-edit mr-2"></i>Personalized Gifts
+                    </a>
+                    <a href="category.html?category=Seasonal%20Specials" class="block px-4 py-2 text-gray-700 hover:bg-pastel-green rounded-lg">
+                        <i class="fas fa-snowflake mr-2"></i>Seasonal Specials
+                    </a>
+                    <a href="category.html?category=Gift%20Hampers" class="block px-4 py-2 text-gray-700 hover:bg-pastel-yellow rounded-lg">
+                        <i class="fas fa-shopping-basket mr-2"></i>Gift Hampers
+                    </a>
+                    <a href="deals.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                        <i class="fas fa-tags mr-2"></i>Deals
+                    </a>
+                    <a href="about.html" class="block px-4 py-2 text-warm-coral font-medium rounded-lg bg-pastel-pink">About</a>
+                    <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-pastel-pink via-pastel-purple to-pastel-blue py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="font-playfair text-4xl lg:text-6xl font-bold text-gray-800 mb-6">
+                        Our <span class="text-warm-coral">Story</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        At GiftWonders, we believe that every gift tells a story, creates a memory, and strengthens the bonds that matter most.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Mission Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="font-playfair text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
+                            Making Gift-Giving <span class="text-warm-coral">Effortless</span>
+                        </h2>
+                        <p class="text-lg text-gray-600 mb-6">
+                            Founded in 2020 with a simple yet powerful vision: to make gift-giving a joyful and meaningful experience for everyone. We understand that finding the perfect gift can be overwhelming, time-consuming, and stressful.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-6">
+                            That's why we've curated a collection of thoughtful, high-quality gifts for every occasion, personality, and budget. From personalized treasures to curated gift hampers, we take the guesswork out of gifting while preserving the love and intention behind every present.
+                        </p>
+                        <div class="flex items-center space-x-6">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-warm-coral">50K+</div>
+                                <div class="text-sm text-gray-600">Happy Customers</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-warm-coral">100K+</div>
+                                <div class="text-sm text-gray-600">Gifts Delivered</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-warm-coral">4.9/5</div>
+                                <div class="text-sm text-gray-600">Customer Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop" 
+                             alt="Gift wrapping and preparation" 
+                             class="rounded-2xl shadow-xl">
+                        <div class="absolute -bottom-6 -right-6 bg-warm-coral text-white p-6 rounded-2xl shadow-lg">
+                            <i class="fas fa-heart text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                        Our <span class="text-warm-coral">Values</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        These core values guide everything we do, from product selection to customer service
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center p-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-warm-coral to-warm-rose rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-heart text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-4">Thoughtfulness</h3>
+                        <p class="text-gray-600">
+                            Every product we select is chosen with care and consideration for the emotions and memories it can create. We believe in gifts that truly matter.
+                        </p>
+                    </div>
+
+                    <div class="text-center p-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-warm-violet to-warm-rose rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-gem text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-4">Quality</h3>
+                        <p class="text-gray-600">
+                            We partner only with trusted suppliers and artisans who share our commitment to exceptional quality and craftsmanship in every product.
+                        </p>
+                    </div>
+
+                    <div class="text-center p-8 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-warm-emerald to-warm-violet rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-users text-2xl text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-4">Connection</h3>
+                        <p class="text-gray-600">
+                            We understand that gifts are about connection. Our mission is to help strengthen relationships and create moments of joy between people.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                        Meet Our <span class="text-warm-coral">Team</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        The passionate people behind GiftWonders who work tirelessly to make your gift-giving experiences magical
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-warm-coral to-warm-rose rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <i class="fas fa-user text-4xl text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Sarah Chen</h3>
+                        <p class="text-warm-coral font-medium mb-3">Founder & CEO</p>
+                        <p class="text-gray-600 text-sm">
+                            A gift enthusiast with 15+ years in retail, Sarah founded GiftWonders to solve her own gift-giving struggles and help others create meaningful moments.
+                        </p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-warm-violet to-warm-rose rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <i class="fas fa-user text-4xl text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Marcus Thompson</h3>
+                        <p class="text-warm-coral font-medium mb-3">Head of Curation</p>
+                        <p class="text-gray-600 text-sm">
+                            With an eye for unique and beautiful items, Marcus travels the world to discover artisans and products that bring joy to our customers.
+                        </p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-warm-emerald to-warm-violet rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <i class="fas fa-user text-4xl text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Emily Rodriguez</h3>
+                        <p class="text-warm-coral font-medium mb-3">Customer Experience Lead</p>
+                        <p class="text-gray-600 text-sm">
+                            Emily ensures every customer interaction is delightful, from browsing our website to receiving their perfectly wrapped gifts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Promise Section -->
+        <section class="py-16 bg-gradient-to-r from-warm-coral to-warm-rose">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="text-white">
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-bold mb-6">
+                        Our Promise to You
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-check-circle text-2xl mt-1 flex-shrink-0"></i>
+                            <div class="text-left">
+                                <h3 class="font-semibold text-lg mb-2">Curated with Love</h3>
+                                <p class="opacity-90">Every product is handpicked by our team for quality, uniqueness, and emotional impact.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-shipping-fast text-2xl mt-1 flex-shrink-0"></i>
+                            <div class="text-left">
+                                <h3 class="font-semibold text-lg mb-2">Fast & Reliable Delivery</h3>
+                                <p class="opacity-90">Your gifts will arrive beautifully packaged and on time, every time.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-gift text-2xl mt-1 flex-shrink-0"></i>
+                            <div class="text-left">
+                                <h3 class="font-semibold text-lg mb-2">Beautiful Presentation</h3>
+                                <p class="opacity-90">Every gift comes beautifully wrapped, ready to create that special unboxing moment.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-headset text-2xl mt-1 flex-shrink-0"></i>
+                            <div class="text-left">
+                                <h3 class="font-semibold text-lg mb-2">Exceptional Support</h3>
+                                <p class="opacity-90">Our dedicated team is here to help make your gift-giving experience perfect.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="category.html" class="inline-block bg-white text-warm-coral px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-shopping-bag mr-2"></i>Start Shopping
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-playfair text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                    Have Questions?
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    We'd love to hear from you! Whether you need gift recommendations, have a custom request, or just want to share feedback, we're here to help.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-warm-coral text-white px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-200 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-envelope mr-2"></i>Get in Touch
+                    </a>
+                    <a href="tel:+1234567890" class="border-2 border-warm-coral text-warm-coral px-8 py-4 rounded-full font-semibold hover:bg-warm-coral hover:text-white transition-all duration-200">
+                        <i class="fas fa-phone mr-2"></i>Call Us Now
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cartSidebar" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="font-playfair text-xl font-semibold text-gray-800">Shopping Cart</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cartItems" class="flex-1 overflow-y-auto p-6">
+                <div class="text-center text-gray-500 py-8">
+                    <i class="fas fa-shopping-cart text-4xl mb-4"></i>
+                    <p>Your cart is empty</p>
+                    <p class="text-sm mt-2">Start adding some gifts to make someone happy!</p>
+                </div>
+            </div>
+            
+            <div id="cartFooter" class="border-t p-6 hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-semibold text-gray-800">Total:</span>
+                    <span id="cartTotal" class="font-bold text-xl text-warm-coral">$0.00</span>
+                </div>
+                <button class="w-full bg-warm-coral text-white py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">
+                    <i class="fas fa-credit-card mr-2"></i>Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40" onclick="toggleCart()"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-gift text-2xl text-warm-coral"></i>
+                        <span class="font-playfair text-2xl font-bold">GiftWonders</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Making gift-giving effortless and meaningful with thoughtfully curated collections for every occasion.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-playfair text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-warm-coral">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-warm-coral transition-colors">Contact</a></li>
+                        <li><a href="deals.html" class="text-gray-300 hover:text-warm-coral transition-colors">Special Offers</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">Gift Guides</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-playfair text-lg font-semibold mb-4">Customer Care</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">Returns</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 GiftWonders. All rights reserved. Made with <i class="fas fa-heart text-warm-coral mx-1"></i> for gift lovers everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

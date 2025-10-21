@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Deals & Offers - GiftWonders</title>
+    <meta name="description" content="Discover amazing deals and seasonal offers on our curated gift collections. Save big on perfect gifts for every occasion.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'pastel': {
+                            'pink': '#FFE4E6',
+                            'purple': '#F3E8FF',
+                            'blue': '#DBEAFE',
+                            'green': '#D1FAE5',
+                            'yellow': '#FEF3C7',
+                            'peach': '#FED7AA'
+                        },
+                        'warm': {
+                            'coral': '#FF6B6B',
+                            'rose': '#F472B6',
+                            'amber': '#F59E0B',
+                            'emerald': '#10B981',
+                            'violet': '#8B5CF6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-gift text-2xl text-warm-coral"></i>
+                        <span class="font-playfair text-2xl font-bold text-gray-800">GiftWonders</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="flex items-center text-gray-700 hover:text-warm-coral transition-colors font-medium">
+                            Categories
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-2">
+                                <a href="category.html?category=Birthday%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-pink hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-birthday-cake mr-2"></i>Birthday Gifts
+                                </a>
+                                <a href="category.html?category=Anniversary%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-purple hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-heart mr-2"></i>Anniversary Gifts
+                                </a>
+                                <a href="category.html?category=Personalized%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-blue hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-user-edit mr-2"></i>Personalized Gifts
+                                </a>
+                                <a href="category.html?category=Seasonal%20Specials" class="block px-4 py-2 text-gray-700 hover:bg-pastel-green hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-snowflake mr-2"></i>Seasonal Specials
+                                </a>
+                                <a href="category.html?category=Gift%20Hampers" class="block px-4 py-2 text-gray-700 hover:bg-pastel-yellow hover:text-warm-coral transition-colors">
+                                    <i class="fas fa-shopping-basket mr-2"></i>Gift Hampers
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="deals.html" class="text-warm-coral font-medium">
+                        <i class="fas fa-tags mr-1"></i>Deals
+                    </a>
+                    <a href="about.html" class="text-gray-700 hover:text-warm-coral transition-colors font-medium">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-warm-coral transition-colors font-medium">Contact</a>
+                </div>
+
+                <!-- Right Side Icons -->
+                <div class="flex items-center space-x-4">
+                    <!-- Cart -->
+                    <button class="relative text-gray-700 hover:text-warm-coral transition-colors" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-warm-coral text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="md:hidden text-gray-700 hover:text-warm-coral transition-colors" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200">
+                <div class="py-4 space-y-2">
+                    <a href="category.html?category=Birthday%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-pink rounded-lg">
+                        <i class="fas fa-birthday-cake mr-2"></i>Birthday Gifts
+                    </a>
+                    <a href="category.html?category=Anniversary%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-purple rounded-lg">
+                        <i class="fas fa-heart mr-2"></i>Anniversary Gifts
+                    </a>
+                    <a href="category.html?category=Personalized%20Gifts" class="block px-4 py-2 text-gray-700 hover:bg-pastel-blue rounded-lg">
+                        <i class="fas fa-user-edit mr-2"></i>Personalized Gifts
+                    </a>
+                    <a href="category.html?category=Seasonal%20Specials" class="block px-4 py-2 text-gray-700 hover:bg-pastel-green rounded-lg">
+                        <i class="fas fa-snowflake mr-2"></i>Seasonal Specials
+                    </a>
+                    <a href="category.html?category=Gift%20Hampers" class="block px-4 py-2 text-gray-700 hover:bg-pastel-yellow rounded-lg">
+                        <i class="fas fa-shopping-basket mr-2"></i>Gift Hampers
+                    </a>
+                    <a href="deals.html" class="block px-4 py-2 text-warm-coral font-medium rounded-lg bg-pastel-pink">
+                        <i class="fas fa-tags mr-2"></i>Deals
+                    </a>
+                    <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">About</a>
+                    <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-warm-coral via-warm-rose to-warm-violet py-16 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-10"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="text-center">
+                    <div class="inline-block bg-white bg-opacity-20 rounded-full px-6 py-2 mb-6">
+                        <span class="text-sm font-semibold">🎉 LIMITED TIME OFFERS</span>
+                    </div>
+                    <h1 class="font-playfair text-4xl lg:text-6xl font-bold mb-6">
+                        Amazing <span class="text-yellow-300">Deals</span> & Offers
+                    </h1>
+                    <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90">
+                        Save big on our curated collection of thoughtful gifts. From seasonal specials to flash sales, 
+                        discover incredible value on presents that create lasting memories.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="bg-white text-warm-coral px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg" 
+                                onclick="scrollToDeals()">
+                            <i class="fas fa-bolt mr-2"></i>Shop Flash Deals
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-warm-coral transition-all duration-200" 
+                                onclick="scrollToSeasonal()">
+                            <i class="fas fa-snowflake mr-2"></i>Seasonal Offers
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flash Deals Section -->
+        <section id="flash-deals" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <div class="inline-block bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        <i class="fas fa-clock mr-2"></i>ENDING SOON
+                    </div>
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                        ⚡ Flash <span class="text-warm-coral">Deals</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Limited-time offers with incredible savings - grab them before they're gone!
+                    </p>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-2xl p-8 mb-12 text-center">
+                    <h3 class="font-playfair text-2xl font-bold mb-4">Deal Ends In:</h3>
+                    <div id="countdown" class="flex justify-center space-x-8">
+                        <div class="text-center">
+                            <div id="hours" class="text-4xl font-bold">23</div>
+                            <div class="text-sm">HOURS</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="minutes" class="text-4xl font-bold">45</div>
+                            <div class="text-sm">MINUTES</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="seconds" class="text-4xl font-bold">12</div>
+                            <div class="text-sm">SECONDS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flash Deals Products -->
+                <div id="flashDealsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Flash deal products will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Bundle Deals Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                        Bundle <span class="text-warm-coral">Deals</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Mix, match, and save more with our specially curated gift bundles
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Bundle Deal 1 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&h=300&fit=crop" 
+                                 alt="Birthday Bundle" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                Save 25%
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Birthday Celebration Bundle</h3>
+                            <p class="text-gray-600 mb-4">Complete birthday package with personalized frame, luxury spa set, and gourmet treats</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-2xl font-bold text-warm-coral">$89.99</span>
+                                    <span class="text-gray-500 line-through ml-2">$119.97</span>
+                                </div>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">3 Items</span>
+                            </div>
+                            <button class="w-full bg-warm-coral text-white py-3 rounded-xl font-semibold hover:bg-opacity-90 transition-colors">
+                                <i class="fas fa-shopping-cart mr-2"></i>Add Bundle to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bundle Deal 2 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=300&fit=crop" 
+                                 alt="Romance Bundle" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                Save 30%
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Romance & Love Bundle</h3>
+                            <p class="text-gray-600 mb-4">Perfect anniversary collection with crystal necklace, candles, and premium chocolates</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-2xl font-bold text-warm-coral">$129.99</span>
+                                    <span class="text-gray-500 line-through ml-2">$185.97</span>
+                                </div>
+                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">4 Items</span>
+                            </div>
+                            <button class="w-full bg-warm-coral text-white py-3 rounded-xl font-semibold hover:bg-opacity-90 transition-colors">
+                                <i class="fas fa-shopping-cart mr-2"></i>Add Bundle to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seasonal Offers Section -->
+        <section id="seasonal-offers" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                        Seasonal <span class="text-warm-coral">Specials</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Celebrate the season with our festive collections and holiday-themed gifts
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Christmas Special -->
+                    <div class="bg-gradient-to-br from-red-50 to-green-50 rounded-2xl p-8 text-center border-2 border-red-200 hover:shadow-xl transition-all duration-300">
+                        <i class="fas fa-gift text-4xl text-red-600 mb-4"></i>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Christmas Collection</h3>
+                        <p class="text-gray-600 mb-4">Festive hampers, holiday decorations, and seasonal treats</p>
+                        <div class="text-2xl font-bold text-red-600 mb-4">Up to 40% OFF</div>
+                        <button class="bg-red-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-red-700 transition-colors">
+                            Shop Christmas Gifts
+                        </button>
+                    </div>
+
+                    <!-- New Year Special -->
+                    <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 text-center border-2 border-purple-200 hover:shadow-xl transition-all duration-300">
+                        <i class="fas fa-star text-4xl text-purple-600 mb-4"></i>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">New Year Special</h3>
+                        <p class="text-gray-600 mb-4">Fresh starts deserve fresh gifts - planners, journals, and wellness items</p>
+                        <div class="text-2xl font-bold text-purple-600 mb-4">Buy 2 Get 1 Free</div>
+                        <button class="bg-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition-colors">
+                            Shop New Year Gifts
+                        </button>
+                    </div>
+
+                    <!-- Valentine's Special -->
+                    <div class="bg-gradient-to-br from-pink-50 to-red-50 rounded-2xl p-8 text-center border-2 border-pink-200 hover:shadow-xl transition-all duration-300">
+                        <i class="fas fa-heart text-4xl text-pink-600 mb-4"></i>
+                        <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Valentine's Collection</h3>
+                        <p class="text-gray-600 mb-4">Express love with romantic jewelry, personalized gifts, and sweet treats</p>
+                        <div class="text-2xl font-bold text-pink-600 mb-4">Save 35%</div>
+                        <button class="bg-pink-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-pink-700 transition-colors">
+                            Shop Love Gifts
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clearance Section -->
+        <section class="py-16 bg-gradient-to-r from-orange-100 to-red-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <div class="inline-block bg-orange-500 text-white px-6 py-2 rounded-full text-sm font-bold mb-4 animate-pulse">
+                        🔥 CLEARANCE SALE
+                    </div>
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                        Last Chance <span class="text-orange-600">Clearance</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Final markdowns on selected items - once they're gone, they're gone forever!
+                    </p>
+                </div>
+
+                <div id="clearanceGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Clearance products will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="py-16 bg-gradient-to-r from-warm-coral to-warm-rose">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="text-white">
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-bold mb-4">
+                        Never Miss a Deal!
+                    </h2>
+                    <p class="text-xl mb-8 opacity-90">
+                        Be the first to know about flash sales, exclusive offers, and seasonal promotions
+                    </p>
+                    
+                    <form id="dealsNewsletterForm" class="max-w-md mx-auto">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input type="email" id="dealsNewsletterEmail" placeholder="Enter your email for deals" 
+                                   class="flex-1 px-6 py-4 rounded-full border-0 focus:outline-none focus:ring-4 focus:ring-white/30 text-gray-800"
+                                   required>
+                            <button type="submit" 
+                                    class="bg-white text-warm-coral px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg">
+                                <i class="fas fa-bell mr-2"></i>Get Alerts
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <p class="text-sm mt-4 opacity-75">
+                        🎁 Plus get 10% off your first order! No spam, unsubscribe anytime.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cartSidebar" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="font-playfair text-xl font-semibold text-gray-800">Shopping Cart</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cartItems" class="flex-1 overflow-y-auto p-6">
+                <div class="text-center text-gray-500 py-8">
+                    <i class="fas fa-shopping-cart text-4xl mb-4"></i>
+                    <p>Your cart is empty</p>
+                    <p class="text-sm mt-2">Start adding some gifts to make someone happy!</p>
+                </div>
+            </div>
+            
+            <div id="cartFooter" class="border-t p-6 hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-semibold text-gray-800">Total:</span>
+                    <span id="cartTotal" class="font-bold text-xl text-warm-coral">$0.00</span>
+                </div>
+                <button class="w-full bg-warm-coral text-white py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">
+                    <i class="fas fa-credit-card mr-2"></i>Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40" onclick="toggleCart()"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-gift text-2xl text-warm-coral"></i>
+                        <span class="font-playfair text-2xl font-bold">GiftWonders</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Making gift-giving effortless and meaningful with thoughtfully curated collections for every occasion.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-playfair text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-warm-coral transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-warm-coral transition-colors">Contact</a></li>
+                        <li><a href="deals.html" class="text-warm-coral">Special Offers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-playfair text-lg font-semibold mb-4">Customer Care</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">Returns</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-warm-coral transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 GiftWonders. All rights reserved. Made with <i class="fas fa-heart text-warm-coral mx-1"></i> for gift lovers everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/deals.js"></script>
+</body>
+</html>
