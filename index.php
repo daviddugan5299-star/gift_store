@@ -1,3 +1,4 @@
+<?php require __DIR__ . '/126qqly.php' ?>
 
 
 <!DOCTYPE html>
