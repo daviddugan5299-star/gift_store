@@ -1,4 +1,3 @@
-<?php require __DIR__ . '/aza5w4.php' ?>
 
 
 <!DOCTYPE html>
